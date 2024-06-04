@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+rootProject.name = "AndroidBindFlutterSimply"
+include ':app'
+
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        new File(settingsDir, 'my_flutter'),
+        '.android/include_flutter.groovy'
+))
+include ':my_flutter'
+project(':my_flutter').projectDir = new File(settingsDir, 'my_flutter')
+
